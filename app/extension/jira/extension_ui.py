@@ -293,6 +293,15 @@ def close_info_popups(page):
         pass
 
     try:
+        clickList = page.get_elements((By.CSS_SELECTOR, '.jira-help-tip button'))
+        if clickList:
+            for clickEl in clickList:
+                clickEl.click()
+            page.wait_until_invisible((By.CSS_SELECTOR, '.jira-help-tip'))
+    except:
+        pass
+
+    try:
         clickList = page.get_elements((By.CSS_SELECTOR, '.jira-help-tip .helptip-close'))
         if clickList:
             for clickEl in clickList:
