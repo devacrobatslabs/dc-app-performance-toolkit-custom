@@ -2,7 +2,8 @@ from locust import HttpUser, task, between
 from locustio.jsm.agents import agents_http_actions
 from locustio.common_utils import LocustConfig, MyBaseTaskSet
 from locustio.jsm.agents.agents_requests_params import jsm_agent_datasets
-from extension.jsm.extension_locust_agents import app_specific_action
+from extension.jsm.extension_locust_agents import app_specific_action, app_property_action, app_license_action
+
 from util.conf import JSM_SETTINGS
 
 config = LocustConfig(config_yml=JSM_SETTINGS)
@@ -60,11 +61,17 @@ class JsmAgentBehavior(MyBaseTaskSet):
     def agent_view_customers(self):
         agents_http_actions.agent_view_customers(self)
 
+    # @task(config.percentage('agent_standalone_extension'))  # By default disabled
+    # def custom_action(self):
+    #     app_specific_action(self)
+
     @task(config.percentage('agent_standalone_extension'))  # By default disabled
-    def custom_action(self):
-        app_specific_action(self)
+    def custom_property_action(self):
+        app_property_action(self)
 
-
+    @task(config.percentage('agent_standalone_extension'))  # By default disabled
+    def custom_license_action(self):
+        app_license_action(self)
 class JsmAgent(HttpUser):
     host = JSM_SETTINGS.server_url
     tasks = [JsmAgentBehavior]

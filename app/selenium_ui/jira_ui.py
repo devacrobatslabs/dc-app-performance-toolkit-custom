@@ -66,6 +66,50 @@ Refer to `app/selenium_ui/jira/modules.py` for examples.
 #     extension_ui.app_specific_action(jira_webdriver, jira_datasets)
 
 
+def test_1_selenium_create_dashboard(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui.app_create_dashboard(jira_webdriver, jira_datasets)
+
+
+def test_1_selenium_add_performance_objectives_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui.app_add_gadget(jira_webdriver, jira_datasets, 'performance-objectives', True, False, False, False)
+
+def test_1_selenium_add_performance_trend_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui.app_add_gadget(jira_webdriver, jira_datasets, 'performance-trend', False, False, False, False)
+
+def test_1_selenium_add_circular_chart_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui.app_add_gadget(jira_webdriver, jira_datasets, 'circle', False, False, False, False)
+
+def test_1_selenium_add_multi_metric_combined_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui.app_add_gadget(jira_webdriver, jira_datasets, 'multi-metric-bar', False, True, False, False)
+
+def test_1_selenium_add_multi_metric_trend_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui.app_add_gadget(jira_webdriver, jira_datasets, 'multi-metric-trend', False, True, False, False)    
+
+def test_1_selenium_add_change_history_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui.app_add_gadget(jira_webdriver, jira_datasets, 'change-history', False, False, True, False)
+
+def test_1_selenium_add_performance_treemap_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui.app_add_gadget(jira_webdriver, jira_datasets, 'tree-map', False, False, False, False)
+
+def test_1_selenium_add_performance_heatmap_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui.app_add_gadget(jira_webdriver, jira_datasets, 'heat-map', False, False, False, True)
+
+def test_1_selenium_add_performance_venn_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui.app_add_gadget(jira_webdriver, jira_datasets, 'venn', False, False, False, False)
+
+def test_1_selenium_add_performance_scatter_bubble_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui.app_add_gadget(jira_webdriver, jira_datasets, 'scatter-bubble', False, False, False, False)
+
+def test_1_selenium_delete_dashboard(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui.app_delete_dashboard(jira_webdriver, jira_datasets)
+
+def test_1_selenium_add_calendar(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui.app_add_remove_work_calendar(jira_webdriver, jira_datasets)
+
+def test_1_selenium_change_color_palette(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui.app_change_color_palette(jira_webdriver, jira_datasets)
+
+
 # this action should be the last one
 def test_2_selenium_z_log_out(jira_webdriver, jira_datasets, jira_screen_shots):
     modules.log_out(jira_webdriver, jira_datasets)

@@ -67,6 +67,49 @@ Refer to `app/selenium_ui/jsm/modules_agents.py` for examples.
 # def test_1_selenium_agent_custom_action(jsm_webdriver, jsm_datasets, jsm_screen_shots):
 #     extension_ui_agents.app_specific_action(jsm_webdriver, jsm_datasets)
 
+def test_1_selenium_create_dashboard(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui_agents.app_create_dashboard(jira_webdriver, jira_datasets)
+
+
+def test_1_selenium_add_performance_objectives_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui_agents.app_add_gadget(jira_webdriver, jira_datasets, 'performance-objectives', True, False, False, False)
+
+def test_1_selenium_add_performance_trend_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui_agents.app_add_gadget(jira_webdriver, jira_datasets, 'performance-trend', False, False, False, False)
+
+def test_1_selenium_add_circular_chart_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui_agents.app_add_gadget(jira_webdriver, jira_datasets, 'circle', False, False, False, False)
+
+def test_1_selenium_add_multi_metric_combined_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui_agents.app_add_gadget(jira_webdriver, jira_datasets, 'multi-metric-bar', False, True, False, False)
+
+def test_1_selenium_add_multi_metric_trend_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui_agents.app_add_gadget(jira_webdriver, jira_datasets, 'multi-metric-trend', False, True, False, False)    
+
+def test_1_selenium_add_change_history_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui_agents.app_add_gadget(jira_webdriver, jira_datasets, 'change-history', False, False, True, False)
+
+def test_1_selenium_add_performance_treemap_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui_agents.app_add_gadget(jira_webdriver, jira_datasets, 'tree-map', False, False, False, False)
+
+def test_1_selenium_add_performance_heatmap_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui_agents.app_add_gadget(jira_webdriver, jira_datasets, 'heat-map', False, False, False, True)
+
+def test_1_selenium_add_performance_venn_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui_agents.app_add_gadget(jira_webdriver, jira_datasets, 'venn', False, False, False, False)
+
+def test_1_selenium_add_performance_scatter_bubble_gadget(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui_agents.app_add_gadget(jira_webdriver, jira_datasets, 'scatter-bubble', False, False, False, False)
+
+def test_1_selenium_delete_dashboard(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui_agents.app_delete_dashboard(jira_webdriver, jira_datasets)
+
+def test_1_selenium_add_calendar(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui_agents.app_add_remove_work_calendar(jira_webdriver, jira_datasets)
+
+def test_1_selenium_change_color_palette(jira_webdriver, jira_datasets, jira_screen_shots):
+    extension_ui_agents.app_change_color_palette(jira_webdriver, jira_datasets)
+
 """
 To enable specific tests for Insight below, set 'True' next to `insight` variable (False by default) in  `app/jsm.yml`
 """
