@@ -95,10 +95,10 @@ def app_add_gadget(jira_webdriver, jira_datasets, gadgetId, isLoadMore, isMulti,
         @print_timing(f'{testName}: add gadget')
         def sub_measure():
             try:
-               page.get_element((By.ID,'add-gadget')).click()
+               page.wait_until_clickable((By.ID,'add-gadget')).click()
             except:
                close_info_popups(page)
-               page.wait_until_visible((By.ID,'add-gadget')).click()
+               page.wait_until_clickable((By.ID,'add-gadget')).click()
         
             
             page.wait_until_visible((By.ID,'list-panel'))
