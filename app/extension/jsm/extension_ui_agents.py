@@ -304,12 +304,12 @@ def close_info_popups(page):
 
 def admin_login_prompt(page):
     try:
-        login_prompt = page.get_elements((By.ID, 'login-form-username'))
+        login_prompt = page.get_elements((By.ID, 'username-field'))
         if login_prompt:
-            page.wait_until_clickable((By.ID, 'login-form-username')).send_keys(JSM_SETTINGS.admin_login)
-            page.wait_until_clickable((By.ID, 'login-form-password'))
-            page.get_element((By.ID, 'login-form-password')).send_keys(JSM_SETTINGS.admin_password)
-            page.get_element((By.ID, 'login-form-submit')).click()
+            page.wait_until_clickable((By.ID, 'username-field')).send_keys(JSM_SETTINGS.admin_login)
+            page.wait_until_clickable((By.ID, 'password-field'))
+            page.get_element((By.ID, 'password-field')).send_keys(JSM_SETTINGS.admin_password)
+            page.get_element((By.ID, 'login-button')).click()
             page.get_element((By.ID, 'login-form-authenticatePassword')).send_keys(JSM_SETTINGS.admin_password)
             page.get_element((By.ID, 'login-form-submit')).click()
     except:
