@@ -153,9 +153,9 @@ def app_add_gadget(jira_webdriver, jira_datasets, gadgetId, isLoadMore, isMulti,
               
 
                 try:
-                    page.wait_until_clickable((By.CSS_SELECTOR, '.ReactModalPortal .maui-button-primary')).click()
+                    page.wait_until_clickable((By.CSS_SELECTOR, '.ReactModalPortal .maui-button.primary')).click()
                 except ElementClickInterceptedException: #retry 1 time because of loading disabled state
-                    page.wait_until_clickable((By.CSS_SELECTOR, '.ReactModalPortal .maui-button-primary')).click()
+                    page.wait_until_clickable((By.CSS_SELECTOR, '.ReactModalPortal .maui-button.primary')).click()
 
                 page.wait_until_visible((By.CSS_SELECTOR,'.data-set-item-name'))
             sub_measure()
@@ -167,21 +167,21 @@ def app_add_gadget(jira_webdriver, jira_datasets, gadgetId, isLoadMore, isMulti,
                     page.wait_until_clickable((By.ID, 'metric-filters-picker')).click()
                     page.wait_until_clickable((By.ID, 'metric-filters-picker')).send_keys(NUMBER_OF_ISSUES)
                     page.wait_until_visible((By.CSS_SELECTOR, f'.MuiAutocomplete-listbox li[title=\'{NUMBER_OF_ISSUES}\']')).click()
-                    page.wait_until_clickable((By.CSS_SELECTOR, '.ReactModal__Content .maui-button-primary')).click()
+                    page.wait_until_clickable((By.CSS_SELECTOR, '.ReactModal__Content .maui-button.primary')).click()
                     page.wait_until_visible((By.CSS_SELECTOR, '.multi-metric-item'))
                 if isHeat:
                     page.wait_until_clickable((By.CSS_SELECTOR, '.group-by button[title=\'Edit\']')).click()
                     page.wait_until_clickable((By.ID, 'field-picker')).click()
                     page.wait_until_clickable((By.ID, 'field-picker')).send_keys(RESOLUTION)
                     page.wait_until_clickable((By.CSS_SELECTOR, f'.MuiAutocomplete-listbox li[title*=\'{RESOLUTION}\']')).click()
-                    page.wait_until_clickable((By.CSS_SELECTOR, '.ReactModal__Content .maui-button-primary')).click()
+                    page.wait_until_clickable((By.CSS_SELECTOR, '.ReactModal__Content .maui-button.primary')).click()
                     page.wait_until_invisible((By.CSS_SELECTOR, '.ReactModal__Content'))
                 if isHistory:
                     page.wait_until_clickable((By.CSS_SELECTOR, '.metric.single button')).click()
                     page.wait_until_clickable((By.ID, 'metric-filters-picker')).click()
                     page.wait_until_clickable((By.ID, 'metric-filters-picker')).send_keys(ORIGINAL_ESTIMATE)
                     page.wait_until_clickable((By.CSS_SELECTOR, f'.MuiAutocomplete-listbox li[title=\'{ORIGINAL_ESTIMATE}\']')).click()
-                    page.wait_until_clickable((By.CSS_SELECTOR, '.ReactModal__Content .maui-button-primary')).click()
+                    page.wait_until_clickable((By.CSS_SELECTOR, '.ReactModal__Content .maui-button.primary')).click()
                     page.wait_until_invisible((By.CSS_SELECTOR, '.ReactModal__Content'))
             sub_measure()
 
@@ -189,7 +189,7 @@ def app_add_gadget(jira_webdriver, jira_datasets, gadgetId, isLoadMore, isMulti,
             def sub_measure():
                 page.wait_until_invisible((By.CSS_SELECTOR, '.ReactModal__Overlay'))
                 page.wait_until_clickable((By.XPATH, '//button[text()[contains(.,\'Save\')]]')).click()
-                # page.wait_until_invisible((By.CSS_SELECTOR,'button.maui-button-primary_wide'))
+                # page.wait_until_invisible((By.CSS_SELECTOR,'button.maui-button.primary.wide'))
             sub_measure()
 
             @print_timing(f'{testName}: load chart')
@@ -228,14 +228,14 @@ def app_add_remove_work_calendar(jira_webdriver, datasets):
         page.wait_until_visible((By.CSS_SELECTOR, '.po-page'))
         page.wait_until_clickable((By.CSS_SELECTOR, 'button[title=\'Add calendar\']')).click()
         page.wait_until_clickable((By.ID, 'calendar-name')).send_keys(calendarName)
-        page.get_element((By.CSS_SELECTOR, 'div[class^=\'ReactModal\'] button.maui-button-primary_wide')).click()
+        page.get_element((By.CSS_SELECTOR, 'div[class^=\'ReactModal\'] button.maui-button.primary.wide')).click()
         page.wait_until_invisible((By.ID, 'calendar-name'))
         # delete calendar
 
         calPath = f'//div[@class=\'list-section\']//div[@class=\'row with-controls\']//span[text()[contains(.,\'{calendarName}\')]]/../..//button[@title=\'Delete\']'
         page.wait_until_visible((By.XPATH, calPath));
         page.get_element((By.XPATH, calPath)).click()
-        page.get_element((By.CSS_SELECTOR, '.maui-button-primary_red')).click()
+        page.get_element((By.CSS_SELECTOR, '.maui-button.primary.red')).click()
         page.wait_until_visible((By.CSS_SELECTOR, 'button[title=\'Add calendar\']'))
     measure()
 
@@ -248,7 +248,7 @@ def app_change_color_palette(jira_webdriver, datasets):
         # change color palette theme
         page.wait_until_visible((By.CSS_SELECTOR, '.po-page'))
         page.wait_until_clickable((By.CSS_SELECTOR, '.header-link[aria-label*=\'Atlas\']')).click()
-        page.get_element((By.CSS_SELECTOR, '.color-palette button.maui-button-primary')).click()
+        page.get_element((By.CSS_SELECTOR, '.color-palette button.maui-button.primary')).click()
         page.wait_until_invisible((By.ID, '.color-palette .list-section'))
     measure()
     
