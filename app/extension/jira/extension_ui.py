@@ -222,6 +222,7 @@ def app_add_remove_work_calendar(jira_webdriver, datasets):
         page.wait_until_clickable((By.ID, 'password-field'))
         page.get_element((By.ID, 'password-field')).send_keys(JIRA_SETTINGS.admin_password)
         page.get_element((By.ID, 'login-button')).click()
+        page.wait_until_visible((By.ID, 'login-form'))
         page.get_element((By.ID, 'login-form-authenticatePassword')).send_keys(JIRA_SETTINGS.admin_password)
         page.get_element((By.ID, 'login-form-submit')).click()
         # add calendar
