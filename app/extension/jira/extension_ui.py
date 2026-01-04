@@ -227,7 +227,7 @@ def app_add_remove_work_calendar(jira_webdriver, datasets):
 
         try:
             page.wait_until_visible((By.ID, 'login-form'))
-            page.get_element((By.ID, 'login-form-authenticatePassword')).send_keys(JIRA_SETTINGS.admin_password)
+            page.get_element((By.CSS_SELECTOR, 'input[name="webSudoPassword"]')).send_keys(JIRA_SETTINGS.admin_password)
             page.get_element((By.ID, 'login-form-submit')).click()
         except:
             pass
@@ -264,7 +264,8 @@ def app_change_color_palette(jira_webdriver, datasets):
 
         try:
             page.wait_until_visible((By.ID, 'login-form'))
-            page.get_element((By.ID, 'login-form-authenticatePassword')).send_keys(JIRA_SETTINGS.admin_password)
+            # page.get_element((By.ID, 'login-form-authenticatePassword')).send_keys(JIRA_SETTINGS.admin_password)
+            page.get_element((By.CSS_SELECTOR, 'input[name="webSudoPassword"]')).send_keys(JIRA_SETTINGS.admin_password)
             page.get_element((By.ID, 'login-form-submit')).click()
         except:
             pass
