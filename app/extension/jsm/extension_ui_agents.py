@@ -218,11 +218,16 @@ def app_add_remove_work_calendar(jira_webdriver, datasets):
         # navigate to calendar page
         page.go_to_url(f"{JSM_SETTINGS.server_url}/secure/ObjectivesWorkCalendarsAction!default.jspa")
 
-        # page.wait_until_clickable((By.ID, 'login-form-username')).send_keys(JSM_SETTINGS.admin_login)
-        # page.wait_until_clickable((By.ID, 'login-form-password'))
-        # page.get_element((By.ID, 'login-form-password')).send_keys(JSM_SETTINGS.admin_password)
-        # Already logged just password needed
         try:
+            page.wait_until_clickable((By.ID, 'username-field')).send_keys(JSM_SETTINGS.admin_login)
+            page.wait_until_clickable((By.ID, 'password-field'))
+            page.get_element((By.ID, 'password-field')).send_keys(JSM_SETTINGS.admin_password)
+            page.get_element((By.ID, 'login-button')).click()
+        except:
+            pass
+
+        try:
+            page.wait_until_visible((By.ID, 'login-form'))
             page.get_element((By.ID, 'login-form-authenticatePassword')).send_keys(JSM_SETTINGS.admin_password)
             page.get_element((By.ID, 'login-form-submit')).click()
         except:
