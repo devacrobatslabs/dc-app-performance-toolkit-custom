@@ -283,6 +283,17 @@ def close_info_popups(page):
     except:
         pass
 
+def close_info_popups(page):
+    try:
+        clickList = page.get_elements((By.CSS_SELECTOR, '#theme-switcher-discovery-card button'))
+        if clickList:
+            for clickEl in clickList:
+                clickEl.click()
+            page.wait_until_invisible((By.CSS_SELECTOR, '#theme-switcher-discovery-card'))
+    except:
+        pass
+    
+
     try:
         clickList = page.get_elements((By.CSS_SELECTOR, '.insiders-signup-form .cancel'))
         if clickList:   # empty array is false in python
@@ -310,16 +321,16 @@ def close_info_popups(page):
     except:
         pass
 
-    # TODO
-    try:
-        clickList = page.get_elements((By.CSS_SELECTOR, 'h2.sc-bwzfXH'))
-        if clickList:
-            for clickEl in clickList:
-                print('### Element to receive click!')
-                print(clickEl)
-                clickEl.click()
-    except:
-        pass
+    # # TODO
+    # try:
+    #     clickList = page.get_elements((By.CSS_SELECTOR, 'h2.sc-bwzfXH'))
+    #     if clickList:
+    #         for clickEl in clickList:
+    #             print('### Element to receive click!')
+    #             print(clickEl)
+    #             clickEl.click()
+    # except:
+    #     pass
 
     # try:
     #     help_tips = page.get_elements((By.CSS_SELECTOR, '.jira-help-tip .helptip-close'))
