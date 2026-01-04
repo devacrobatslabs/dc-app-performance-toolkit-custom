@@ -321,16 +321,6 @@ def close_info_popups(page):
     except:
         pass
 
-    # # TODO
-    # try:
-    #     clickList = page.get_elements((By.CSS_SELECTOR, 'h2.sc-bwzfXH'))
-    #     if clickList:
-    #         for clickEl in clickList:
-    #             print('### Element to receive click!')
-    #             print(clickEl)
-    #             clickEl.click()
-    # except:
-    #     pass
 
     # try:
     #     help_tips = page.get_elements((By.CSS_SELECTOR, '.jira-help-tip .helptip-close'))
