@@ -217,14 +217,20 @@ def app_add_remove_work_calendar(jira_webdriver, datasets):
         calendarName = f"Cal {time.time()}"  # the input field is ax length 25
         # navigate to calendar page
         page.go_to_url(f"{JIRA_SETTINGS.server_url}/secure/ObjectivesWorkCalendarsAction!default.jspa")
+        try:
+            page.wait_until_clickable((By.ID, 'username-field')).send_keys(JIRA_SETTINGS.admin_login)
+            page.wait_until_clickable((By.ID, 'password-field'))
+            page.get_element((By.ID, 'password-field')).send_keys(JIRA_SETTINGS.admin_password)
+            page.get_element((By.ID, 'login-button')).click()
+        except:
+            pass
 
-        page.wait_until_clickable((By.ID, 'username-field')).send_keys(JIRA_SETTINGS.admin_login)
-        page.wait_until_clickable((By.ID, 'password-field'))
-        page.get_element((By.ID, 'password-field')).send_keys(JIRA_SETTINGS.admin_password)
-        page.get_element((By.ID, 'login-button')).click()
-        page.wait_until_visible((By.ID, 'login-form'))
-        page.get_element((By.ID, 'login-form-authenticatePassword')).send_keys(JIRA_SETTINGS.admin_password)
-        page.get_element((By.ID, 'login-form-submit')).click()
+        try:
+            page.wait_until_visible((By.ID, 'login-form'))
+            page.get_element((By.ID, 'login-form-authenticatePassword')).send_keys(JIRA_SETTINGS.admin_password)
+            page.get_element((By.ID, 'login-form-submit')).click()
+        except:
+            pass
         # add calendar
         page.wait_until_visible((By.CSS_SELECTOR, '.po-page'))
         page.wait_until_clickable((By.CSS_SELECTOR, 'button[title=\'Add calendar\']')).click()
@@ -247,6 +253,21 @@ def app_change_color_palette(jira_webdriver, datasets):
         # navigate to color palette page
         page.go_to_url(f"{JIRA_SETTINGS.server_url}/secure/ObjectivesColorPaletteAction!default.jspa")
         # change color palette theme
+        # Already logged as admin from work calendar
+        # try:
+        #     page.wait_until_clickable((By.ID, 'username-field')).send_keys(JIRA_SETTINGS.admin_login)
+        #     page.wait_until_clickable((By.ID, 'password-field'))
+        #     page.get_element((By.ID, 'password-field')).send_keys(JIRA_SETTINGS.admin_password)
+        #     page.get_element((By.ID, 'login-button')).click()
+        # except:
+        #     pass
+
+        try:
+            page.wait_until_visible((By.ID, 'login-form'))
+            page.get_element((By.ID, 'login-form-authenticatePassword')).send_keys(JIRA_SETTINGS.admin_password)
+            page.get_element((By.ID, 'login-form-submit')).click()
+        except:
+            pass
         page.wait_until_visible((By.CSS_SELECTOR, '.po-page'))
         page.wait_until_clickable((By.CSS_SELECTOR, '.header-link[aria-label*=\'Atlas\']')).click()
         page.get_element((By.CSS_SELECTOR, '.color-palette button.maui-button.primary')).click()
