@@ -217,6 +217,8 @@ def app_add_remove_work_calendar(jira_webdriver, datasets):
         calendarName = f"Cal {time.time()}"  # the input field is ax length 25
         # navigate to calendar page
         page.go_to_url(f"{JIRA_SETTINGS.server_url}/secure/ObjectivesWorkCalendarsAction!default.jspa")
+
+        close_info_popups(page)
         try:
             page.wait_until_clickable((By.ID, 'username-field')).send_keys(JIRA_SETTINGS.admin_login)
             page.wait_until_clickable((By.ID, 'password-field'))
@@ -305,7 +307,6 @@ def close_info_popups(page):
     except:
         pass
 
-def close_info_popups(page):
     try:
         clickList = page.get_elements((By.CSS_SELECTOR, '#theme-switcher-discovery-card button'))
         if clickList:

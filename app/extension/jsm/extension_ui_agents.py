@@ -307,7 +307,6 @@ def close_info_popups(page):
     except:
         pass
 
-def close_info_popups(page):
     try:
         clickList = page.get_elements((By.CSS_SELECTOR, '#theme-switcher-discovery-card button'))
         if clickList:
